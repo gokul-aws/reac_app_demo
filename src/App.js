@@ -1,11 +1,11 @@
 import React from 'react';
-import Calculator from './Calculator';
+import PuzzleGame from './PuzzleGame';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Calculator />
+      <PuzzleGame />
     </div>
   );
 }
