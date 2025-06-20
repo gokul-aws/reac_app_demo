@@ -8,16 +8,17 @@ const INITIAL_SNAKE = [
 const INITIAL_DIRECTION = { x: 0, y: -1 };
 const SPEED = 120;
 
+function isOnSnake(x, y, snake) {
+  return snake.some(seg => seg.x === x && seg.y === y);
+}
+
 function getRandomFood(snake) {
-  let newFood;
-  while (true) {
-    newFood = {
-      x: Math.floor(Math.random() * GRID_SIZE),
-      y: Math.floor(Math.random() * GRID_SIZE),
-    };
-    if (!snake.some(seg => seg.x === newFood.x && seg.y === newFood.y)) break;
-  }
-  return newFood;
+  let x, y;
+  do {
+    x = Math.floor(Math.random() * GRID_SIZE);
+    y = Math.floor(Math.random() * GRID_SIZE);
+  } while (isOnSnake(x, y, snake));
+  return { x, y };
 }
 
 const SnakeGame = () => {
